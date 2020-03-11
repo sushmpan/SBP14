@@ -1,5 +1,4 @@
 package com.training.sanity.tests;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -47,8 +46,8 @@ public class LoginTests {
 	}
 	@Test
 	public void validLoginTest() {
-		loginPOM.sendUserName("admin");
-		loginPOM.sendPassword("admin@123");
+		loginPOM.sendUserName("test@gmail.com");
+		loginPOM.sendPassword("welcome@123");
 		loginPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("First");
 	}
