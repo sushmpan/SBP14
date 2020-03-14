@@ -49,12 +49,12 @@ public class RETC_38 {
 		
 		retc_038.clickBlog();
 		Thread.sleep(3000);
-		retc_038.contactUs();
-		retc_038.Name("selenium");
-		retc_038.email("selenium@gmail.com");
-		retc_038.message("looking for apartment");
-		retc_038.subject("apartment");
-		retc_038.sendmail();
+		retc_038.clickContactUs();
+		retc_038.getName("selenium");
+		retc_038.getEmail("selenium@gmail.com");
+		retc_038.getMessage("looking for apartment");
+		retc_038.getSubject("apartment");
+		retc_038.sendMail();
 		screenShot.captureScreenShot("First");
 	}
 }

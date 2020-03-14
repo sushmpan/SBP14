@@ -41,4 +41,15 @@ public class LoginDataProviders {
 		// ensure you will have the title as first line in the file 
 		return new ReadExcel().getExcelData("C:/Users/Naveen/Desktop/Testing.xls", "Sheet1"); 
 	}
+	@DataProvider(name = "dataprovider_TC060")
+	public Object[][] dataprovider_TC060(){
+		String fileName ="C:\\Users\\SushmaPandey\\Desktop\\selenium\\TC_60_testdata.xlsx"; 
+		return new ApachePOIExcelRead().getExcelContent(fileName); 
+	}
+	@DataProvider(name = "dataprovider_TC061")
+	public Object[][] dataprovider_TC061(){
+		String fileName ="C:\\Users\\SushmaPandey\\Desktop\\selenium\\TC_61_testdata.xlsx"; 
+		return new ApachePOIExcelRead().getExcelContent(fileName); 
+	}
+	
 }

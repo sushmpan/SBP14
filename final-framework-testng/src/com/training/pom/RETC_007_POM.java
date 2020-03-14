@@ -38,22 +38,22 @@ public class RETC_007_POM {
 	@FindBy(xpath="//input[@value='Send']")
 	private WebElement submitBtn; 
 	
-	public void yourName(String yourName) {
+	public void getName(String yourName) {
 		this.yourname.clear();
 		this.yourname.sendKeys(yourName);
 	}
 	
-	public void subject(String subject) {
+	public void getSubject(String subject) {
 		this.subject.clear(); 
 		this.subject.sendKeys(subject); 
 	}
 	
-	public void message(String message) {
+	public void getMessage(String message) {
 		this.message.clear();
 		this.message.sendKeys(message);
 	}
 	
-	public void email(String email) {
+	public void getEmail(String email) {
 		this.email.clear(); 
 		this.email.sendKeys(email); 
 	}

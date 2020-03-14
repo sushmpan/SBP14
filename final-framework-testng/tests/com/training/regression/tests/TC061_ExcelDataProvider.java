@@ -15,14 +15,14 @@ import com.training.bean.LoginBean;
 import com.training.dao.ELearningDAO;
 import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.ScreenShot;
-import com.training.pom.LoginPOM;
+import com.training.pom.RETC_060_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class LoginExcelTest {
+public class TC061_ExcelDataProvider {
 	private WebDriver driver;
 	private String baseUrl;
-	private LoginPOM loginPOM;
+	private RETC_060_POM retc_060_pom;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -36,7 +36,7 @@ public class LoginExcelTest {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		loginPOM = new LoginPOM(driver);
+		retc_060_pom = new RETC_060_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -48,12 +48,13 @@ public class LoginExcelTest {
 		driver.quit();
 	}
 
-	@Test(dataProvider = "dataprovider_TC060", dataProviderClass = LoginDataProviders.class)
-	public void loginDBTest(String Username,String password ) {
-		loginPOM.sendUserName(Username);
-		loginPOM.sendPassword(password);
-		
-		loginPOM.clickLoginBtn();
+	@Test(dataProvider = "dataprovider_TC061", dataProviderClass = LoginDataProviders.class)
+	public void RETC_060_DBTest(String salesprice, String downpayment,String LoanTerm, String interest_rate ) throws InterruptedException {
+		retc_060_pom.getSalesprice(salesprice);
+		retc_060_pom.getDownpayment(downpayment);
+		retc_060_pom.getYears(LoanTerm);
+		retc_060_pom.getInterest(interest_rate);
+		retc_060_pom.calculateInterest();
 		screenShot.captureScreenShot();
 
 	}

@@ -25,7 +25,7 @@ public class RETC_038_POM {
 	private WebElement name;
 	
 	@FindBy(name="subject")
-	private WebElement sub;
+	private WebElement Subject;
 
 	
 	@FindBy(name="email")
@@ -40,31 +40,31 @@ public class RETC_038_POM {
 	private WebElement send; 
 	
 	
-	public void Name(String name) {
+	public void getName(String name) {
 		this.name.clear();
 		this.name.sendKeys(name);
 	}
 	
-	public void subject(String subject) {
-		this.sub.clear(); 
-		this.sub.sendKeys(subject); 
+	public void getSubject(String subject) {
+		this.Subject.clear(); 
+		this.Subject.sendKeys(subject); 
 	}
 	
-	public void message(String message) {
+	public void getMessage(String message) {
 		this.message.clear();
 		this.message.sendKeys(message);
 	}
 	
-	public void email(String email) {
+	public void getEmail(String email) {
 		this.email.clear(); 
 		this.email.sendKeys(email); 
 	}
 	
-	public void sendmail()
+	public void sendMail()
 	{
 		this.send.click(); 
 	}
-	public void contactUs()
+	public void clickContactUs()
 	{
 		this.dropUsMail.click(); 
 	}

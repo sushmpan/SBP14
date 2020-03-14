@@ -49,10 +49,10 @@ public class RETC_007 {
 	public void validLoginTest() throws InterruptedException {
 		retc.tabMouseHover();
 		Thread.sleep(3000);
-		retc.yourName("Sushma");
-		retc.message("2BHK in bangalore");;
-		retc.email("Query");
-		retc.subject("helloz");
+		retc.getName("Sushma");
+		retc.getMessage("2BHK in bangalore");;
+		retc.getEmail("Query");
+		retc.getSubject("helloz");
 		retc.clickSubmit();
 		screenShot.captureScreenShot("First");
 	}

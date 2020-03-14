@@ -53,6 +53,7 @@ public class RETC_008 {
 		Thread.sleep(2000);
 		Retc_008.getInterest("7.25");
 		Retc_008.calculateInterest();
+		Retc_008.monthlyPaymentValidation();
 		screenShot.captureScreenShot("First");
-	}
-}
+	
+} }

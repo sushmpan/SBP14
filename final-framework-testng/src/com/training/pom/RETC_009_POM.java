@@ -26,14 +26,14 @@ public class RETC_009_POM {
 	@FindBy(name="keyword_search")
 	private WebElement address;
 	
-	@FindBy(xpath="//a[@class='chosen-single chosen-default']")
+	@FindBy(xpath="//div[@id='_property_type_chosen']//a[@class='chosen-single chosen-default']")
 	private WebElement propertyType;
 	
-	@FindBy(xpath="//div[@class='chosen-container chosen-container-single']//a[@class='chosen-single chosen-default']")
+	@FindBy(xpath="//span[contains(text(),'Any Regions')]")
 	private WebElement region;
 	
 	@FindBy(xpath="//button[@class='button fullwidth']")
-	private WebElement search; 
+	private WebElement searchButton; 
 	
 	
 	public void addressSearch(String address) {
@@ -42,11 +42,12 @@ public class RETC_009_POM {
 
 	}
 	public void region(String region) {
-		
+		this.region.clear();
 		this.region.sendKeys(region);
 	}
 	
 	public void propertyType(String propertyName) {
+		this.propertyType.clear();
 		this.propertyType.sendKeys(propertyName);
 
 	}
@@ -56,6 +57,6 @@ public class RETC_009_POM {
 		plots.click();
 	}
 	public void clickSearch() {
-		this.search.click(); 
+		this.searchButton.click(); 
 	}
 }

@@ -7,11 +7,14 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class RETC_008_POM {
+public class RETC_060_POM {
 	private WebDriver driver; 
-	private String expectedInterestAmount = "Monthly Payment:3003.43 Rs.";
+	private String expectedInterestAmount1 = "Monthly Payment: 242.07 Rs.";
+	private String expectedInterestAmount2 = "Monthly Payment: 3313.21 Rs.";
+	private String expectedInterestAmount3 = "Monthly Payment: 84.85 Rs.";
 
-	public RETC_008_POM(WebDriver driver) {
+
+	public RETC_060_POM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -77,14 +80,53 @@ public class RETC_008_POM {
 		Thread.sleep(3000);
 		donecquis.click();
 	}
-	public void monthlyPaymentValidation() throws InterruptedException
+	public void interestValidation_1() throws InterruptedException
 	{
 		String act1= actualInterestmessage.getText();
 		String act2= actualInterestamount.getText();
 		String act3= act1.concat(act2);
 		Thread.sleep(3000);
-		Assert.assertEquals(act3, expectedInterestAmount);
+		Assert.assertEquals(act3, expectedInterestAmount1);
 		System.out.println("Correct Interest Amount displayed");
 	}
+	public void interestValidation_2() throws InterruptedException
+	{
+		String act1= actualInterestmessage.getText();
+		String act2= actualInterestamount.getText();
+		String act3= act1.concat(act2);
+		Thread.sleep(3000);
+		Assert.assertEquals(act3, expectedInterestAmount2);
+		System.out.println("Correct Interest Amount displayed");
+	}
+	public void interestValidation_3() throws InterruptedException
+	{
+		String act1= actualInterestmessage.getText();
+		String act2= actualInterestamount.getText();
+		String act3= act1.concat(act2);
+		Thread.sleep(3000);
+		Assert.assertEquals(act3, expectedInterestAmount3);
+		System.out.println("Correct Interest Amount displayed");
+	}
+	public void checkForNullValidation()
 	
+	{
+		if(salesprice.getAttribute("value").matches("null"))
+		{
+			System.out.println("please enter sales price monthly payment calculated");
+		}
+		else if(interest_rate.getAttribute("value").matches("null"))
+		{
+			System.out.println("please enter interets rate  to get the monthly payment calculated");
+		}
+		else if(LoanTerm.getAttribute("value").matches("null"))
+		{
+			System.out.println("please enter loan term  value to get the monthly payment calculated");
+		}
+		else if(downpayment.getAttribute("value").matches("null"))
+		{
+			System.out.println("please enter down payment value to get the monthly payment calculated");
+		}
+
+
+	}
 }
