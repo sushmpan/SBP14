@@ -1,5 +1,14 @@
 package com.training.pom;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.openxml4j.opc.OPCPackage;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -7,18 +16,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
-public class RETC_060_POM {
+public class RETC_067_POM {
 	private WebDriver driver; 
-	private String expectedInterestAmount1 = "Monthly Payment: 242.07 Rs.";
-	private String expectedInterestAmount2 = "Monthly Payment: 3313.21 Rs.";
-	private String expectedInterestAmount3 = "Monthly Payment: 84.85 Rs.";
+	XSSFCell cell1, cell2, cell3;
 
-
-	public RETC_060_POM(WebDriver driver) {
+	public RETC_067_POM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
 	
+	//Element identification used for TC060 and TC067
 	@FindBy(xpath="//a[contains(text(),'New Launch')]")
 	private WebElement newlaunch; 
 	
@@ -45,10 +52,8 @@ public class RETC_060_POM {
 	@FindBy(xpath="//div[@class='notification success']")
 	private WebElement actualInterestmessage; 
 	
-	@FindBy(xpath="//strong[@class='calc-output']")
-	private WebElement actualInterestamount; 
 	
-	
+	//Methods used in TC060 and TC067
 	public void getSalesprice(String amount) {
 		this.salesprice.clear();
 		this.salesprice.sendKeys(amount);
@@ -80,34 +85,26 @@ public class RETC_060_POM {
 		Thread.sleep(3000);
 		donecquis.click();
 	}
-	public void interestValidation_1() throws InterruptedException
-	{
+	public void interestValidation_1() throws InterruptedException, IOException
+	{   
+		try {
+	FileInputStream fis = new FileInputStream("C:\\Users\\SushmaPandey\\Desktop\\selenium\\TC_60_testdata.xlsx");
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet sheet = wb.getSheet("Sheet1");
+		cell1 = sheet.getRow(0).getCell(4);
+		String expectedText1 = cell1.getStringCellValue();
 		String act1= actualInterestmessage.getText();
-		String act2= actualInterestamount.getText();
-		String act3= act1.concat(act2);
 		Thread.sleep(3000);
-		Assert.assertEquals(act3, expectedInterestAmount1);
-		System.out.println("Correct Interest Amount displayed");
-	}
-	public void interestValidation_2() throws InterruptedException
+		Assert.assertEquals(act1, expectedText1);
+		System.out.println("Correct Monthly payment displayed");
+	} catch (IOException e)
+	
 	{
-		String act1= actualInterestmessage.getText();
-		String act2= actualInterestamount.getText();
-		String act3= act1.concat(act2);
-		Thread.sleep(3000);
-		Assert.assertEquals(act3, expectedInterestAmount2);
-		System.out.println("Correct Interest Amount displayed");
-	}
-	public void interestValidation_3() throws InterruptedException
-	{
-		String act1= actualInterestmessage.getText();
-		String act2= actualInterestamount.getText();
-		String act3= act1.concat(act2);
-		Thread.sleep(3000);
-		Assert.assertEquals(act3, expectedInterestAmount3);
-		System.out.println("Correct Interest Amount displayed");
-	}
-	public void checkForNullValidation()
+		System.out.println("Error" + e);
+	}}
+	
+	// Method for Test case 67
+		public void checkForNullValidation()
 	
 	{
 		if(salesprice.getAttribute("value").matches("null"))

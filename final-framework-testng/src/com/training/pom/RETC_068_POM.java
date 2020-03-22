@@ -1,22 +1,21 @@
 package com.training.pom;
 
 
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RETC_007_POM {
+public class RETC_068_POM {
 	private WebDriver driver; 
 
 
-	public RETC_007_POM(WebDriver driver) {
+	public RETC_068_POM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
-	// element identification 
+	
 	@FindBy(xpath="//a[contains(text(),'New Launch')]")
 	private WebElement newlaunch; 
 	
@@ -39,7 +38,6 @@ public class RETC_007_POM {
 	@FindBy(xpath="//input[@value='Send']")
 	private WebElement submitBtn; 
 	
-	//Methods
 	public void getName(String yourName) {
 		this.yourname.clear();
 		this.yourname.sendKeys(yourName);
@@ -47,10 +45,7 @@ public class RETC_007_POM {
 	
 	public void getSubject(String subject) {
 		this.subject.clear(); 
-		Actions act = new Actions(driver);
-		act.keyDown(Keys.SHIFT);
 		this.subject.sendKeys(subject); 
-		act.keyUp(Keys.SHIFT).perform();
 	}
 	
 	public void getMessage(String message) {

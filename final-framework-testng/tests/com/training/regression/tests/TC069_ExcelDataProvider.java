@@ -1,4 +1,5 @@
-package com.training.sanity.tests;
+package com.training.regression.tests;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
@@ -7,20 +8,23 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
+import com.training.bean.LoginBean;
+import com.training.dao.ELearningDAO;
+import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.ScreenShot;
-import com.training.pom.RETC_060_POM;
+import com.training.pom.RETC_068_069_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class RETC_060 {
-
+public class TC069_ExcelDataProvider {
 	private WebDriver driver;
 	private String baseUrl;
+	private RETC_068_069_POM retc_068_069_pom;
 	private static Properties properties;
 	private ScreenShot screenShot;
-	private RETC_060_POM Retc_060;
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
@@ -32,27 +36,28 @@ public class RETC_060 {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		Retc_060 = new RETC_060_POM(driver);
+		retc_068_069_pom = new RETC_068_069_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
-		screenShot = new ScreenShot(driver); 
-		// open the browser 
+		screenShot = new ScreenShot(driver);
+		// open the browser
 		driver.get(baseUrl);
 	}
-	
+
 	@AfterMethod
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
 		driver.quit();
 	}
-	@Test
-	public void validLoginTest() throws InterruptedException {
-		Retc_060.tabMouseHover();
-		Retc_060.getSalesprice("400000");
-		Retc_060.getDownpayment("20000");
-		Retc_060.getYears("20");
-		Thread.sleep(2000);
-		Retc_060.getInterest("7.25");
-		Retc_060.calculateInterest();
-		screenShot.captureScreenShot("First");
+
+	@Test(dataProvider = "dataprovider_TC069", dataProviderClass = LoginDataProviders.class)
+	public void RETC_060_DBTest(String salesprice, String downpayment,String LoanTerm, String interest_rate ) throws InterruptedException {
+		retc_068_069_pom.blankFieldValidation();
+		retc_068_069_pom.getSalesprice(salesprice);
+		retc_068_069_pom.getDownpayment(downpayment);
+		retc_068_069_pom.getYears(LoanTerm);
+		retc_068_069_pom.getInterest(interest_rate);
+		retc_068_069_pom.calculateInterest();
+		screenShot.captureScreenShot();
+
 	}
+
 }

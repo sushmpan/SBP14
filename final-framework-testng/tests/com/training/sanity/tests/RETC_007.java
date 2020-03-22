@@ -52,7 +52,7 @@ public class RETC_007 {
 		retc.getName("Sushma");
 		retc.getMessage("2BHK in bangalore");;
 		retc.getEmail("Query");
-		retc.getSubject("helloz");
+		retc.getSubject("Apartment Requirement for rent");
 		retc.clickSubmit();
 		screenShot.captureScreenShot("First");
 	}

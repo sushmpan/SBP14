@@ -14,18 +14,21 @@ import org.testng.annotations.Test;
 import com.training.bean.LoginBean;
 import com.training.dao.ELearningDAO;
 import com.training.dataproviders.LoginDataProviders;
+import com.training.generics.GenericMethods;
 import com.training.generics.ScreenShot;
-import com.training.pom.RETC_060_POM;
+import com.training.pom.RETC_068_069_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class TC061_ExcelDataProvider {
+public class RETC_069_DBTest {
 	private WebDriver driver;
 	private String baseUrl;
-	private RETC_060_POM retc_060_pom;
+	private RETC_068_069_POM retc_068_69_pom;
 	private static Properties properties;
 	private ScreenShot screenShot;
-
+	private GenericMethods genericMethods; 
+	
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws IOException {
 		properties = new Properties();
@@ -36,27 +39,36 @@ public class TC061_ExcelDataProvider {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		retc_060_pom = new RETC_060_POM(driver);
+		retc_068_69_pom = new RETC_068_069_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
+		genericMethods = new GenericMethods(driver); 
 		// open the browser
 		driver.get(baseUrl);
 	}
 
 	@AfterMethod
 	public void tearDown() throws Exception {
+		Thread.sleep(1000);
 		driver.quit();
 	}
 
-	@Test(dataProvider = "dataprovider_TC061", dataProviderClass = LoginDataProviders.class)
-	public void RETC_060_DBTest(String salesprice, String downpayment,String LoanTerm, String interest_rate ) throws InterruptedException {
-		retc_060_pom.getSalesprice(salesprice);
-		retc_060_pom.getDownpayment(downpayment);
-		retc_060_pom.getYears(LoanTerm);
-		retc_060_pom.getInterest(interest_rate);
-		retc_060_pom.calculateInterest();
-		screenShot.captureScreenShot();
+
+	@Test(dataProvider = "dataprovider_TC069", dataProviderClass = LoginDataProviders.class)
+	public void RETC_060_DBTest(String salesprice, String downpayment,String LoanTerm, String interest_rate) throws InterruptedException, IOException {
+		retc_068_69_pom.tabMouseHover();
+		retc_068_69_pom.blankFieldValidation();
+		retc_068_69_pom.getSalesprice(salesprice);
+		retc_068_69_pom.getDownpayment(downpayment);
+		retc_068_69_pom.getYears(LoanTerm);
+		retc_068_69_pom.getInterest(interest_rate);
+		retc_068_69_pom.calculateInterest();
+		Thread.sleep(3000);
+				
+	
+		//screenShot.captureScreenShot();
+
 
 	}
 
-}
+} 

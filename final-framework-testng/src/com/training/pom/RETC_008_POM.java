@@ -10,7 +10,7 @@ import org.testng.Assert;
 public class RETC_008_POM {
 	private WebDriver driver; 
 	private String expectedInterestAmount = "Monthly Payment:3003.43 Rs.";
-
+   //widget identifications
 	public RETC_008_POM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
@@ -45,7 +45,7 @@ public class RETC_008_POM {
 	@FindBy(xpath="//strong[@class='calc-output']")
 	private WebElement actualInterestamount; 
 	
-	
+	//Methods
 	public void getSalesprice(String amount) {
 		this.salesprice.clear();
 		this.salesprice.sendKeys(amount);

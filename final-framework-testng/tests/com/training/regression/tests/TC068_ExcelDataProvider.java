@@ -15,14 +15,14 @@ import com.training.bean.LoginBean;
 import com.training.dao.ELearningDAO;
 import com.training.dataproviders.LoginDataProviders;
 import com.training.generics.ScreenShot;
-import com.training.pom.RETC_060_POM;
+import com.training.pom.RETC_068_069_POM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
-public class TC060_ExcelDataProvider {
+public class TC068_ExcelDataProvider {
 	private WebDriver driver;
 	private String baseUrl;
-	private RETC_060_POM retc_060_pom;
+	private RETC_068_069_POM retc_068_069_pom;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
@@ -36,7 +36,7 @@ public class TC060_ExcelDataProvider {
 	@BeforeMethod
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		retc_060_pom = new RETC_060_POM(driver);
+		retc_068_069_pom = new RETC_068_069_POM(driver);
 		baseUrl = properties.getProperty("baseURL");
 		screenShot = new ScreenShot(driver);
 		// open the browser
@@ -48,15 +48,17 @@ public class TC060_ExcelDataProvider {
 		driver.quit();
 	}
 
-	@Test(dataProvider = "dataprovider_TC060", dataProviderClass = LoginDataProviders.class)
-	public void RETC_060_DBTest(String salesprice, String downpayment,String LoanTerm, String interest_rate ) throws InterruptedException {
-		retc_060_pom.getSalesprice(salesprice);
-		retc_060_pom.getDownpayment(downpayment);
-		retc_060_pom.getYears(LoanTerm);
-		retc_060_pom.getInterest(interest_rate);
-		retc_060_pom.calculateInterest();
+	@Test(dataProvider = "dataprovider_TC068", dataProviderClass = LoginDataProviders.class)
+	public void RETC_060_DBTest(String salesprice, String downpayment,String LoanTerm, String interest_rate, String expectedMessage ) throws InterruptedException, IOException {
+		retc_068_069_pom.tabMouseHover();
+		retc_068_069_pom.getSalesprice(salesprice);
+		retc_068_069_pom.getDownpayment(downpayment);
+		retc_068_069_pom.getYears(LoanTerm);
+		retc_068_069_pom.getInterest(interest_rate);
+		retc_068_069_pom.calculateInterest();
+		retc_068_069_pom.interestValidation_1();
+		Thread.sleep(3000);
 		screenShot.captureScreenShot();
 
-	}
+	} }
 
-}
