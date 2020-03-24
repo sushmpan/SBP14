@@ -1,11 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="0" passed="0">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
+    <line>
+      <![CDATA[All the required details has been entered successfully]]>
+    </line>
+    <line>
+      <![CDATA[All the required details has been entered and submitted]]>
+    </line>
   </reporter-output>
-  <suite name="Default suite" duration-ms="7" started-at="2020-03-22T16:29:43Z" finished-at="2020-03-22T16:29:43Z">
+  <suite name="Default suite" duration-ms="43406" started-at="2020-03-24T10:07:41Z" finished-at="2020-03-24T10:08:24Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="7" started-at="2020-03-22T16:29:43Z" finished-at="2020-03-22T16:29:43Z">
+    <test name="Default test" duration-ms="43406" started-at="2020-03-24T10:07:41Z" finished-at="2020-03-24T10:08:24Z">
+      <class name="com.training.sanity.tests.RETC_007">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.RETC_007@5c7fa833]" name="setUpBeforeClass" is-config="true" duration-ms="7" started-at="2020-03-24T15:37:41Z" finished-at="2020-03-24T15:37:41Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUpBeforeClass -->
+        <test-method status="PASS" signature="setUp()[pri:0, instance:com.training.sanity.tests.RETC_007@5c7fa833]" name="setUp" is-config="true" duration-ms="32134" started-at="2020-03-24T15:37:41Z" finished-at="2020-03-24T15:38:13Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="validLoginTest()[pri:0, instance:com.training.sanity.tests.RETC_007@5c7fa833]" name="validLoginTest" duration-ms="9465" started-at="2020-03-24T15:38:13Z" finished-at="2020-03-24T15:38:22Z">
+          <reporter-output>
+            <line>
+              <![CDATA[All the required details has been entered successfully]]>
+            </line>
+            <line>
+              <![CDATA[All the required details has been entered and submitted]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- validLoginTest -->
+        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.RETC_007@5c7fa833]" name="tearDown" is-config="true" duration-ms="1781" started-at="2020-03-24T15:38:22Z" finished-at="2020-03-24T15:38:24Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- tearDown -->
+      </class> <!-- com.training.sanity.tests.RETC_007 -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>
