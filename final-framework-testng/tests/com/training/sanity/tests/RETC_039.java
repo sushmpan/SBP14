@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -52,6 +53,7 @@ public class RETC_039 {
 		Thread.sleep(3000);
 		retc_039.password("admin@123");
 		retc_039.signIn();
+		Reporter.log("Login Success");
 		retc_039.Click_post();
 		retc_039.select_category();
 		retc_039.category_name("New Launches");
@@ -59,12 +61,14 @@ public class RETC_039 {
 		retc_039.select_parentcategory();
 		retc_039.getDescription("New Launches of villas, apartments, flats");
 		retc_039.submit();
+		Reporter.log("Post has been submitted");
 		Thread.sleep(3000);
 		retc_039.Click_post();
 		retc_039.add_newPost();
 		retc_039.postTitle("New Launches");
 		retc_039.content(" New Launch in Home");
 		retc_039.post_publish();
-		screenShot.captureScreenShot("First");
+		Reporter.log("Post has been publishS");
+		screenShot.captureScreenShot("TC039");
 	}
 }

@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -52,7 +53,8 @@ public class RETC_009 {
 		retc.addressSearch("Electronic City, Bengaluru, Karnataka, India");
 		retc.propertyType("Plots");
 		retc.region("Central Bangalore");
+		Reporter.log("Required search elements has been entered");
 		retc.clickSearch();
-		screenShot.captureScreenShot("First");
+		screenShot.captureScreenShot("TC009");
 	}
 }

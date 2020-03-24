@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -53,7 +54,9 @@ public class RETC_007 {
 		retc.getMessage("2BHK in bangalore");;
 		retc.getEmail("Query");
 		retc.getSubject("Apartment Requirement for rent");
+		Reporter.log("All the required details has been entered successfully");
 		retc.clickSubmit();
-		screenShot.captureScreenShot("First");
+		Reporter.log("All the required details has been entered and submitted");
+		screenShot.captureScreenShot("TC007");
 	}
 }

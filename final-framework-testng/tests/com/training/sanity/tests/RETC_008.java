@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -52,8 +53,12 @@ public class RETC_008 {
 		Retc_008.getYears("20");
 		Thread.sleep(2000);
 		Retc_008.getInterest("7.25");
+		Reporter.log("All the required fields has been entered successfully");;
 		Retc_008.calculateInterest();
+		Reporter.log("Monthly payment is calculated ");;
 		Retc_008.monthlyPaymentValidation();
-		screenShot.captureScreenShot("First");
+		Reporter.log("Monthly payment displayed as expected ");
+
+		screenShot.captureScreenShot("TC008");
 	
 } }

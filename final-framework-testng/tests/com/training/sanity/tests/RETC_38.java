@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -55,6 +56,7 @@ public class RETC_38 {
 		retc_038.getMessage("looking for apartment");
 		retc_038.getSubject("apartment");
 		retc_038.sendMail();
-		screenShot.captureScreenShot("First");
+		Reporter.log("Message has been sent");
+		screenShot.captureScreenShot("TC038");
 	}
 }

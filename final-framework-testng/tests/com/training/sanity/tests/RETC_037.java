@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.openqa.selenium.WebDriver;
+import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -50,12 +51,13 @@ public class RETC_037 {
 		retc_037.clickPlots();
 		retc_037.addressSearch("Electronic City, Bengaluru, Karnataka, India");
 		retc_037.searchButtonClick();
+		Reporter.log("Search Creteria has been enetered");
 		retc_037.resultClick();
 		retc_037.yourName("selenium");
 		retc_037.email("selenium@gmail.com");
 		retc_037.message("looking for apartment");
 		retc_037.subject("apartment");
-		
-		screenShot.captureScreenShot("First");
+		Reporter.log("Enquiry related to apartment has been sent");
+		screenShot.captureScreenShot("TC037");
 	}
 }
